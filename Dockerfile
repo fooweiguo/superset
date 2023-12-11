@@ -15,9 +15,6 @@
 # limitations under the License.
 #
 
-FROM ubuntu:latest
-RUN export SUPERSET_CONFIG_PATH="/app/docker/pythonpath_dev/superset_config.py"; echo $SUPERSET_CONFIG_PATH
-
 ######################################################################
 # Node stage to deal with static asset construction
 ######################################################################
@@ -62,9 +59,7 @@ ENV LANG=C.UTF-8 \
     FLASK_APP="superset.app:create_app()" \
     PYTHONPATH="/app/pythonpath" \
     SUPERSET_HOME="/app/superset_home" \
-    SUPERSET_CONFIG_PATH="/app/docker/pythonpath_dev/superset_config.py" \
     SUPERSET_PORT=8088
-    
 
 RUN mkdir -p ${PYTHONPATH} superset/static superset-frontend apache_superset.egg-info requirements \
     && useradd --user-group -d ${SUPERSET_HOME} -m --no-log-init --shell /bin/bash superset \
