@@ -15,6 +15,9 @@
 # limitations under the License.
 #
 
+FROM ubuntu:latest
+RUN export SUPERSET_CONFIG_PATH="/app/docker/pythonpath_dev/superset_config.py"; echo $SUPERSET_CONFIG_PATH
+
 ######################################################################
 # Node stage to deal with static asset construction
 ######################################################################
